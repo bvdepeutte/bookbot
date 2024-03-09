@@ -1,9 +1,10 @@
 def main():
     book_path = "books/Frankenstein.txt"
-    text = get_book_text(book_path)
+    text = get_book_text(book_path).lower()
     # print(text)
     words = len(get_list(text))
-    print(words)
+    dic_letters = get_letter_count(text)
+    print(dic_letters)
 
 
 def get_book_text(path):
@@ -16,6 +17,13 @@ def get_list(book_text):
     # print(words)
     return words
 
-
+def get_letter_count(text):
+    letters = {}
+    for i in range(len(text)):
+        if text[i] in letters:
+            letters[text[i]] += 1
+        else:
+            letters[text[i]] = 1
+    return letters
 
 main()
